@@ -1,0 +1,23 @@
+[
+  {
+    "name": "sdnkl",
+    "id": 5687775997845769153,
+    "friendlist": []
+  },
+  {
+    "name": "Hovo",
+    "id": 6649122982631488739,
+    "friendlist": []
+  },
+  {
+    "name": "aram",
+    "id": 5298971956100709635,
+    "friendlist": [
+      {
+        "name": "Hovo",
+        "id": 6649122982631488739,
+        "friendlist": []
+      }
+    ]
+  }
+]
