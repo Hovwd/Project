@@ -12,11 +12,13 @@ import com.google.gson.GsonBuilder;
 
 public class Server {
  private static List<User> users;
- protected static void inUsers(){
-	 users=new ArrayList();
- }
+
  public static List<User> getUsers()
  {
+	 if(users==null)
+	 {
+		 return new ArrayList<User>();
+	 }
 	 return users;
  }
  public static User getUser(String name)

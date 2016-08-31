@@ -8,27 +8,41 @@ private final long id;
 private String password;
 private List<User> friendlist;
 private  List<String> numberlist;
-private User(String name,String Password)
+private Gender user_gender;
+public String getPassword(){ return password;}
+private User(String name,String password,String gender)
 {
 	friendlist = new ArrayList<User>();
-	List<String> numberlist =new ArrayList<String>();
+	numberlist =new ArrayList<String>();
 	Random rnd = new Random();
 	id=Math.abs(rnd.nextLong());
 	this.password=password;
 	this.name=name;
+	user_gender=Gender.getGendder(gender);
+	}
+private User(String name,String password)
+{
+	friendlist = new ArrayList<User>();
+	numberlist =new ArrayList<String>();
+	Random rnd = new Random();
+	id=Math.abs(rnd.nextLong());
+	this.password=password;
+	this.name=name;
+	
 	}
 public String getName(){return this.name;}
 
+static User createUser(String name,String password,String gender)
+{
+	return new User(name,password,gender);
+	}
 static User createUser(String name,String password)
 {
 	return new User(name,password);
 	}
 public void addFriend(String name) throws Exception
 {
-
-
-
-	if(Server.getUser(name)==null || Server.getUser(name).getName()==this.name)
+	if(Server.getUser(name).getName()==this.name)
 	{
 		throw new Exception();
 	}

@@ -61,7 +61,10 @@ private void signUp() throws IOException{
 	System.out.println("Say your password");
 	System.out.println("<<<<<");
 	String password=scan.nextLine();
-	User us=User.createUser(name, password);
+	System.out.println("Say your gender");
+	System.out.println("<<<<<");
+	String gender=scan.nextLine();
+	User us=User.createUser(name, password,gender);
 	if(getUsers()==null || getUsers().size()==0)
 	{
 		
@@ -107,44 +110,69 @@ private void pushFriend() throws IOException{
 	String name = scan.nextLine();
 	try {
 		online_user.addFriend(name);
+		getUser(name).addFriend(online_user.getName());
 	} catch (Exception e) {
 		System.out.println("this user no exist");
 	}
 	save();
 }
-private void addNumber(){}
+private void addNumber(){
+	Scanner scan =new Scanner(System.in);
+	System.out.println("check your friend name");
+	System.out.print("<<<<<<<");
+	String number=scan.nextLine();
+			online_user.addNumber(number);
+}
 private void help(){}
 
 private void ShowNumbers(){};
 public void play() throws IOException
 {
+	System.out.println("hellow please sign Up or sign in");
 	System.out.println();
 	while(true)
 	{
 		
 		Scanner scan =new Scanner(System.in);
 		String command=scan.nextLine();
+		command=command.toLowerCase();
+		
 		if(!isonline)
 		{
+			
 			switch(command){
-			case "Sign In":
+			case "sign in":
 			signIn();
 			break;
-			case "Sign Up":
+			case "sign up":
 				signUp();
 				break;
 				default:
-				System.out.println("incorect usser name");
+				System.out.println("incorect command");
 			}
 			
-			
+			if(isonline)
+			{
+				System.out.println("now you are logined");
+			}
 		}
 		else
 		{
 			switch(command){
 			case "add friend":
 				pushFriend();
+				break;
+			case "add number":
+				addNumber();
+				break;
+			case "sign out":
+				signOut();
+				break;
+			case "show friends":
+				online_user.showFriendNumbers();
+				break;
 			}
+			
 		}
 	}
 	}
